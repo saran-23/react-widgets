@@ -1,7 +1,16 @@
-import React, { useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
+import Axios from 'axios';
+import axios from 'axios';
 const Search = () => {
     const [term, setTerm] = useState('');
+
+    useEffect(() => {
+        const search = async () => {
+            await axios.get('saran');
+        };
+
+        search();
+    },[term]);
     return (
         <div>
             <div className="ui form">
@@ -9,8 +18,7 @@ const Search = () => {
                     <label>Enter Search Term</label>
                         <input
                          value={term}
-                         onC
-                         hange={(e) =>setTerm(e.target.value)}
+                         onChange={(e) =>setTerm(e.target.value)}
                          className="input" />
                 </div>
             </div>
