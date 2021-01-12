@@ -7,7 +7,7 @@ const Accordion = ({items}) => {
       const  onTitleClick = (index) => {
         setActiveIndex(index);
     };
-   
+
         return (
             <React.Fragment key={item.title}>
                 <div className="title active"
