@@ -1,15 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import Axios from 'axios';
 import axios from 'axios';
 const Search = () => {
-    const [term, setTerm] = useState('');
+    const [term, setTerm] = useState('programming');
+    const [results,setresults]=useState('');
+
+    console.log(results);
 
     useEffect(() => {
-        const search = async () => {
-            await axios.get('saran');
+     const search = async () => {
+     const {data} =   await axios.get('https://en.wikipedia.org/w/api.php',{
+                params: {
+                    action:'query',
+                    list:'search',
+                    origin: '*',
+                    format:'json',
+                    srsearch: term,
+                },
+            });
+            setresults(data.query.search);
         };
-
-        search();
+        if (term) {
+            search();
+        }
     },[term]);
     return (
         <div>
