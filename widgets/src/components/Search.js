@@ -4,7 +4,6 @@ const Search = () => {
     const [term, setTerm] = useState('programming');
     const [results,setresults]=useState('');
 
-    console.log(results);
 
     useEffect(() => {
      const search = async () => {
@@ -19,10 +18,22 @@ const Search = () => {
             });
             setresults(data.query.search);
         };
-        if (term) {
+
             search();
-        }
     },[term]);
+                   
+    const renderredResults = results.map((result) => {
+        return (
+                 <div className="item">
+                            <div className="content"> 
+                            <div className="header">
+                            {result.title}
+                            </div>
+                            {result.snippet}
+                            </div>    
+                            </div>
+                        );
+                    });
     return (
         <div>
             <div className="ui form">
@@ -33,6 +44,9 @@ const Search = () => {
                          onChange={(e) =>setTerm(e.target.value)}
                          className="input" />
                 </div>
+            </div>
+            <div className="ui celled list"> 
+                {renderredResults}
             </div>
         </div>
     );
