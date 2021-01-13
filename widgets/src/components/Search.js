@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { render } from 'react-dom';
 const Search = () => {
     const [term, setTerm] = useState('programming');
-    const [results,setresults]=useState('');
+    const [results,setresults]=useState([]);
 
 
     useEffect(() => {
@@ -22,33 +23,35 @@ const Search = () => {
             search();
     },[term]);
                    
-    const renderredResults = results.map((result) => {
-        return (
-                 <div className="item">
+    const renderedResults = results.map((result) => {
+         return (
+                 <div key={result.pageid} className="item">
                             <div className="content"> 
                             <div className="header">
                             {result.title}
+
                             </div>
-                            {result.snippet}
+                            <span dangerouslySetInnerHTML={{__html:result.snippet}}></span>
+
                             </div>    
                             </div>
                         );
                     });
-    return (
-        <div>
-            <div className="ui form">
-                <div className="field">
-                    <label>Enter Search Term</label>
-                        <input
-                         value={term}
-                         onChange={(e) =>setTerm(e.target.value)}
-                         className="input" />
-                </div>
-            </div>
-            <div className="ui celled list"> 
-                {renderredResults}
-            </div>
-        </div>
+                     return (
+                            <div>
+                                <div className="ui form">
+                                    <div className="field">
+                                        <label>Enter Search Term</label>
+                                            <input
+                                            value={term}
+                                            onChange={(e) =>setTerm(e.target.value)}
+                                            className="input" />
+                                    </div>
+                                </div>
+                                <div className="ui celled list"> 
+                                    {renderedResults}
+                                </div>
+                            </div>
     );
 }
 
