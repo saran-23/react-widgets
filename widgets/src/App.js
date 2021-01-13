@@ -24,8 +24,8 @@ const options =[
         value: 'red'
     },
     {
-        label:'The Color Blue',
-        value: 'blue'
+        label:'The Color Green',
+        value: 'green'
     },
     {
         label: 'A Shade of Blue',
@@ -33,6 +33,7 @@ const options =[
     },
 ];
 
+        // eslint-disable-next-line import/no-anonymous-default-export
         export default () => {
             const [selected ,setSelected]=useState(options[0]);
 
