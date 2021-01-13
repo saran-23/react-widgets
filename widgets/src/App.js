@@ -35,14 +35,25 @@ const options =[
 
         // eslint-disable-next-line import/no-anonymous-default-export
         export default () => {
-            const [selected ,setSelected]=useState(options[0]);
+
+          const [selected ,setSelected]=useState(options[0]);            //shows the default label
+            const [showDropdown,setShowDropdown]=useState(true);
 
         return (
                 <div>
+                    <button onClick={() => {setShowDropdown(!showDropdown)}}>
+
+                    Toggle Button
+                    </button>
+                    {               //wrapping
+                     showDropdown ? //ternary expression                                                       
+
                     <Dropdown
                      selected={selected}
-                    onSelectedChange={setSelected}
-                     options={options}/>
-                </div>
+                     onSelectedChange={setSelected}
+                     options={options}
+                     /> : null
+                    }
+                     </div>
             );
         };
