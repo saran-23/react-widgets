@@ -40,7 +40,7 @@ const  Dropdown = ({label,options,selected,onSelectedChange}) => {
                     {label}
                     </label>
                 <div  onClick={()=> setOpen(!open)} className={`ui selection dropdown  ${ open ? 'visible active' : ''}`}>
-                    <b>Choosen Language: &nbsp; </b>
+                    {/* <b>Choosen Language: &nbsp; </b>0 */}
                     <i className="dropdown icon"></i>
                     <div className="text">{selected.label}</div>
                     <div className={`menu ${open ? 'visible transition': ''}`}>{renderedOptions}</div>
