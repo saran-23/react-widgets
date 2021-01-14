@@ -1,4 +1,4 @@
-import Accordion from "./Accordion";
+
 
 const Route =({path,children})=> {
 
